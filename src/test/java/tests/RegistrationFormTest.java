@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormTest {
 
@@ -21,6 +20,9 @@ public class RegistrationFormTest {
     void successfulRegistrationTest() {
         String userName = "Yury";
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         $("#firstName").setValue(userName);
         $("#lastName").setValue("Vitovtov");
