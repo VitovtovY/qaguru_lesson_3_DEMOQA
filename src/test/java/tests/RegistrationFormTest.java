@@ -11,14 +11,11 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationFormTest {
 
-    {
-        Configuration.pageLoadStrategy = "eager";
-    }
     @BeforeAll
     static void beforeAll() {
+        Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        // Configuration.holdBrowserOpen = true;
     }
     @Test
     void successfulRegistrationTest() {
@@ -48,8 +45,18 @@ public class RegistrationFormTest {
 
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Yury"), text("vitovtov.y@test.com"), text("Vitovtov"),
-                text("Male"), text("2345678901"), text("06 November,1991"),text("Chemistry, Maths"),
-                text("Sports, Reading"), text("avatar.png"), text("344 Bobby st."), text("Haryana Panipat"));
+
+        $(".table-responsive").shouldHave(text(userName));
+        $(".table-responsive").shouldHave(text("vitovtov.y@test.com"));
+        $(".table-responsive").shouldHave(text("Vitovtov"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("2345678901"));
+        $(".table-responsive").shouldHave(text("06 November,1991"));
+        $(".table-responsive").shouldHave(text("Chemistry, Maths"));
+        $(".table-responsive").shouldHave(text("Sports, Reading"));
+        $(".table-responsive").shouldHave(text("avatar.png"));
+        $(".table-responsive").shouldHave(text("344 Bobby st."));
+        $(".table-responsive").shouldHave(text("Haryana Panipat"));
+
         }
     }
